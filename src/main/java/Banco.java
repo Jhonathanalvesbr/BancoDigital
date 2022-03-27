@@ -1,5 +1,3 @@
-package com.mycompany.bancodigital;
-
 import java.util.List;
 
 import lombok.Data;

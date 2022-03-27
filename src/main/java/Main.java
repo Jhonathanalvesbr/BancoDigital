@@ -1,22 +1,21 @@
-package com.mycompany.bancodigital;
-
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SaldoInsuficiente {
 		Cliente jhonathan = new Cliente();
 		jhonathan.setNome("Jhonathan");
 
 		Cliente mylena = new Cliente();
 		mylena.setNome("Mylena");
-		
-		Conta contaCorrente = new ContaCorrente(jhonathan);
-		Conta contaPoupanca = new ContaPoupanca(mylena);
 
-		contaCorrente.depositar(1000);
-		contaCorrente.transferir(250, contaPoupanca);
+		jhonathan.setContaCorrente(new ContaCorrente(jhonathan));
+		mylena.setContaPoupanca(new ContaPoupanca(mylena));
+
+		jhonathan.getContaCorrente().depositar(1000);
+		jhonathan.getContaCorrente().transferir(250,
+				mylena.getContaPoupanca());
 		
-		contaCorrente.imprimirExtrato();
-		contaPoupanca.imprimirExtrato();
+		jhonathan.getContaCorrente().imprimirExtrato();
+		mylena.getContaPoupanca().imprimirExtrato();
 	}
 
 }
