@@ -21,23 +21,23 @@ public abstract class Conta implements IConta {
     public void sacar(double valor) throws SaldoInsuficiente {
         if (saldo <= 0 || saldo < valor) {
             throw new SaldoInsuficiente();
-        }
-        else{
+        } else {
             saldo -= valor;
         }
     }
 
     @Override
     public void depositar(double valor) {
-        saldo += valor;
+        if (valor >= 0) {
+            saldo += valor;
+        }
     }
 
     @Override
     public void transferir(double valor, IConta contaDestino) throws SaldoInsuficiente {
         if (this.saldo < valor) {
             throw new SaldoInsuficiente();
-        }
-        else {
+        } else {
             this.sacar(valor);
             contaDestino.depositar(valor);
         }
