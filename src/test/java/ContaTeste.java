@@ -29,4 +29,12 @@ public class ContaTeste {
         conta.depositar(-1000);
         Assertions.assertEquals(0,conta.getSaldo());
     }
+
+    @Test
+    public void depositar() {
+        Conta conta = new ContaCorrente(new Cliente());
+
+        conta.depositar(1000);
+        Assertions.assertEquals(1000,conta.getSaldo());
+    }
 }
